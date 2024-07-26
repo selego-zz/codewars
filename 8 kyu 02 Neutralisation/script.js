@@ -23,3 +23,51 @@ Examples
 Notes
 The two strings will be the same length.
 */
+
+function neutralise(s1, s2) {
+  let c = s1.split("");
+  c.forEach((element, index, array) => {
+    array[index] = element === s2[index] ? element : "0";
+  });
+
+  return c.join("");
+}
+
+function neutraliseV2(s1, s2) {
+  let res = "";//Strings are inmutable, so I need a new string to return
+  for (let i = 0; i < s1.length; i++) {
+    res += s1[i] === s2[i] ? s1[i] : "0";
+  };
+  return res;
+}
+
+let test = [
+  { s1: "--++--", s2: "++--++", expected: "000000" },
+  { s1: "-+-+-+", s2: "-+-+-+", expected: "-+-+-+" },
+  { s1: "-++-", s2: "-+-+", expected: "-+00" },
+  { s1: "--++", s2: "++++", expected: "00++" },
+  { s1: "+++--+---", s2: "++----++-", expected: "++0--000-" },
+  { s1: "-----", s2: "-----", expected: "-----" },
+  { s1: "-+", s2: "++", expected: "0+" },
+  { s1: "--", s2: "-+", expected: "-0" },
+  { s1: "-++", s2: "+--", expected: "000" },
+  { s1: "++-++--++-", s2: "-+++-++-++", expected: "0+0+0000+0" },
+  { s1: "-++-+-++-", s2: "+-++++---", expected: "00+0+000-" },
+  { s1: "---++-+--", s2: "-+++--++-", expected: "-00+0-+0-" },
+  { s1: "+-----+++-", s2: "--+-+-++--", expected: "0-0-0-++0-" },
+  { s1: "+-----+-", s2: "---++-++", expected: "0--00-+0" },
+  { s1: "-+--+-+---", s2: "-+--+-+-+-", expected: "-+--+-+-0-" },
+  { s1: "+-+", s2: "-++", expected: "00+" },
+  { s1: "-++", s2: "-+-", expected: "-+0" },
+  { s1: "---+", s2: "-+++", expected: "-00+" },
+  { s1: "+--", s2: "+--", expected: "+--" },
+];
+
+
+test.forEach(element => {
+  let v1 = neutralise(element.s1, element.s2);
+  console.log(`test: '${element.s1}' and '${element.s2}' , obtenido '${v1}', esperado '${element.expected}', test ${v1 === element.expected ? "Passed" : "Failed"}`);
+  let v2 = neutraliseV2(element.s1, element.s2);
+  console.log(`test: '${element.s1}' and '${element.s2}' , obtenido '${v2}', esperado '${element.expected}', test ${v2 === element.expected ? "Passed" : "Failed"}`);
+  console.log("");
+});
