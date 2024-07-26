@@ -42,15 +42,15 @@ function firstLetterUcase(str) {
 }
 
 let test = [
-  { initial: '', corrected: '' },
-  { initial: 'the_stealth_warrior', corrected: 'theStealthWarrior' },
-  { initial: 'The-Stealth-Warrior', corrected: 'TheStealthWarrior' },
-  { initial: 'A-B-C', corrected: 'ABC' },
-  { initial: 'the-pippi_was_cute', corrected: 'thePippiWasCute' },
-  { initial: 'The_Cat_is_evil', corrected: 'TheCatIsEvil' },
+  { initial: '', expected: '' },
+  { initial: 'the_stealth_warrior', expected: 'theStealthWarrior' },
+  { initial: 'The-Stealth-Warrior', expected: 'TheStealthWarrior' },
+  { initial: 'A-B-C', expected: 'ABC' },
+  { initial: 'the-pippi_was_cute', expected: 'thePippiWasCute' },
+  { initial: 'The_Cat_is_evil', expected: 'TheCatIsEvil' },
 ];
 
 test.forEach(text => {
   let result = toCamelCase(text.initial);
-  console.log(`test: '${text.initial}', obtenido '${result}', esperado '${text.corrected}', test ${result === text.corrected ? "Passed" : "Failed"}`);
+  console.log(`test: '${text.initial}', obtenido '${result}', esperado '${text.expected}', test ${result === text.expected ? "Passed" : "Failed"}`);
 });
