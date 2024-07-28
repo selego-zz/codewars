@@ -1,5 +1,1 @@
-import { Test } from "./test.js";
-
-export {
-  Test,
-}
+export { Test } from "./test.js";
